@@ -15,13 +15,14 @@
 # Author:
 #   jtslear
 
-rtUrl = process.env.HUBOT_RT_URL
-rtUsername = process.env.HUBOT_RT_USERNAME
-rtPassword = process.env.HUBOT_RT_PASSWORD
-
-if rtUsername != undefined && rtUsername.length > 0
-  auth = "#{rtUsername}:#{rtPassword}"
-
-rtIgnoreUsers = process.env.HUBOT_RT_ISSUES_IGNORE_USERS ? "hubot"
-
-print rtURL
+class Instance
+  rtUrl = process.env.HUBOT_RT_URL
+  rtUsername = process.env.HUBOT_RT_USERNAME
+  rtPassword = process.env.HUBOT_RT_PASSWORD
+  
+  if rtUsername != undefined && rtUsername.length > 0
+    auth = "#{rtUsername}:#{rtPassword}"
+  
+  rtIgnoreUsers = process.env.HUBOT_RT_ISSUES_IGNORE_USERS ? "hubot"
+  
+  print rtURL
