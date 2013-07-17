@@ -8,21 +8,25 @@
 #   HUBOT_RT_URL (format: "https://example.com:9090")
 #   HUBOT_RT_USERNAME
 #   HUBOT_RT_PASSWORD
-#   HUBOT_RT_IGNORE_USERS (optional, format: "user1|user2", default is "hubot")
 #
 # Commands:
+#   hubot rturl - will show the url configured
+#   hubot rtuser - will show the user configured
+#   hubot rt[\d] - will provide details of a ticket
 # 
 # Author:
 #   jtslear
 
-class Instance
-  rtUrl = process.env.HUBOT_RT_URL
-  rtUsername = process.env.HUBOT_RT_USERNAME
-  rtPassword = process.env.HUBOT_RT_PASSWORD
-  
-  if rtUsername != undefined && rtUsername.length > 0
-    auth = "#{rtUsername}:#{rtPassword}"
-  
-  rtIgnoreUsers = process.env.HUBOT_RT_ISSUES_IGNORE_USERS ? "hubot"
-  
-  print rtURL
+module.exports = (robot) ->
+  env = process.env
+ 
+  robot.respond /rturl/i, (msg) ->
+    msg.send process.env.HUBOT_RT_URL
+
+  robot.respond /rtuser/i, (msg) ->
+    msg.send process.env.HUBOT_RT_PASSWORD
+
+  robot.respond /rt(\d+)/i, (msg) ->
+    for matched in msg.match
+      ticket = (matched.match /(\d+)/)[0]
+      msg.send ticket
