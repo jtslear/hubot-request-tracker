@@ -24,9 +24,9 @@ module.exports = (robot) ->
     msg.send process.env.HUBOT_RT_URL
 
   robot.respond /rtuser/i, (msg) ->
-    msg.send process.env.HUBOT_RT_PASSWORD
+    msg.send process.env.HUBOT_RT_USERNAME
 
   robot.respond /rt(\d+)/i, (msg) ->
-    for matched in msg.match
-      ticket = (matched.match /(\d+)/)[0]
-      msg.send ticket
+    httprequest = msg.robot.http(process.env.HUBOT_RT_URL) 
+      .get() (err, res, body) ->
+        msg.send body
