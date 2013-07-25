@@ -27,6 +27,19 @@ module.exports = (robot) ->
     msg.send process.env.HUBOT_RT_USERNAME
 
   robot.respond /rt(\d+)/i, (msg) ->
-    httprequest = msg.robot.http(process.env.HUBOT_RT_URL) 
+    ticketNumber = escape(msg.match[1])
+    rtUrl = process.env.HUBOT_RT_URL
+    username = process.env.HUBOT_RT_USERNAME
+    password = process.env.HUBOT_RT_PASSWORD
+    auth = 'Basic ' + new Buffer(username + ':' + password).toString('base64');
+    msg.robot.http("#{rtUrl}/REST/1.0/ticket/#{ticketNumber}/show") 
+      .headers(Authorization: auth, Accept: 'application/json')
       .get() (err, res, body) ->
-        msg.send body
+        switch res.statusCode
+          when  200
+            msg.send body
+          when 401
+            msg.send "Authentication Failure"
+          else
+            msg.send "shit"
+            msg.send body
