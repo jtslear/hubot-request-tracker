@@ -37,9 +37,9 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         switch res.statusCode
           when  200
-            msg.send body
+            match = body.match(/Subject:\ (.+)/)
+            msg.send match[1]
           when 401
             msg.send "Authentication Failure"
           else
             msg.send "shit"
-            msg.send body

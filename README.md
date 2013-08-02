@@ -14,9 +14,9 @@ This is a very young script, and probably nasty looking script.  Please feel fre
 ##Usage##
 
 Thus far he responds to 3 items:
- * `hubot rt` passes back HUBOT\_RT\_URL
+ * `hubot rturl` passes back HUBOT\_RT\_URL
  * `hubot rtuser` passes back HUBOT\_RT\_USERNAME
  * `hubot rt[\d]` reaches out to your RT instance quering for that ticket number
 
 ##Notes##
-This script is still very young and does not yet parse the details in a format suitable for output.  Work in progress!
+This script is still very young and work in progress!
