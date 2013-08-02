@@ -39,6 +39,7 @@ module.exports = (robot) ->
           when  200
             match = body.match(/Subject:\ (.+)/)
             msg.send match[1]
+            msg.send "#{rtUrl}//Ticket/Display.html?id=#{ticketNumber}"
           when 401
             msg.send "Authentication Failure"
           else
