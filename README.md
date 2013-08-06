@@ -1,4 +1,4 @@
-#hubot-request_tracker#
+#hubot-request-tracker#
 
 This will eventually be a coffeescript that will ping Request Tracker's REST API for discovering ticket details.
 
