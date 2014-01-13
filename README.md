@@ -1,7 +1,5 @@
 #hubot-request-tracker#
 
-This will eventually be a coffeescript that will ping Request Tracker's REST API for discovering ticket details.
-
 This is a very young script, and probably nasty looking script.  Please feel free to fork this project and contribute.
 
 ##Setup##
@@ -16,7 +14,8 @@ This is a very young script, and probably nasty looking script.  Please feel fre
 Thus far he responds to 3 items:
  * `hubot rturl` passes back HUBOT\_RT\_URL
  * `hubot rtuser` passes back HUBOT\_RT\_USERNAME
- * `hubot rt[\d]` reaches out to your RT instance quering for that ticket number
+ * `hubot rt[\d]` reaches out to your RT instance quering for that ticket number, returning the Subject and link to the ticket
+ * `hubot rtsearch [\w]` performs a search on the subject line for all new and open tickets
 
 ##Notes##
 This script is still very young and work in progress!
